@@ -106,7 +106,7 @@ function Weather(props) {
     const pollWeather = async (location) => {
       let url = 'http://api.openweathermap.org/data/2.5/weather?';
 
-      const apiKey = process.env.REACT_APP_WEATHER_API;
+      const apiKey = import.meta.env.VITE_SOME_KEY;
 
       const params = {
         lat: location.coords.latitude,
@@ -119,7 +119,7 @@ function Weather(props) {
       const res = await fetch(url);
       if (res.ok) {
         const weather = await res.json();
-        setWeather(weather);
+        return setWeather(weather);
       }
       else {
         alert ("Check Weather API key!")
